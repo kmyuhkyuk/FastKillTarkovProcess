@@ -1,0 +1,55 @@
+<Window
+    x:Class="FastKillTarkovProcess.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:FastKillTarkovProcess.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:FastKillTarkovProcess.ViewModels"
+    Title="FastKillTarkovProcess"
+    Width="450"
+    Height="450"
+    d:DesignHeight="450"
+    d:DesignWidth="450"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <helpers:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" FontSize="32">结束塔科夫进程快捷键</TextBlock>
+            <Button
+                Margin="0,24,0,0"
+                HorizontalAlignment="Center"
+                Command="{Binding BindKeyCommandCommand, Mode=OneWay}"
+                Content="{Binding ShortcutName, Mode=OneWay}"
+                FontSize="28"
+                IsEnabled="{Binding BindKeyCommandCommand.IsRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" />
+            <CheckBox
+                Margin="0,12,0,0"
+                HorizontalAlignment="Center"
+                Content="启用"
+                IsChecked="{Binding IsEnabledShortcut, Mode=OneWay}"
+                IsCheckedChanged="EnabledShortcutButton_OnIsCheckedChanged" />
+        </StackPanel>
+
+        <StackPanel
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            PointerPressed="AppInfoTextBlock_OnPointerPressed">
+            <TextBlock Margin="0,0,8,2">
+                kmyuhkyuk 制作
+            </TextBlock>
+            <TextBlock
+                Margin="0,0,8,8"
+                HorizontalAlignment="Right"
+                Text="{Binding AppService.AppVersion, Mode=OneWay}" />
+        </StackPanel>
+
+
+    </Grid>
+
+</Window>

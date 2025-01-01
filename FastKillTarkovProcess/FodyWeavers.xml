@@ -1,0 +1,10 @@
+﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+  <Costura>
+    <Unmanaged64Assemblies>
+      av_libglesv2
+      libHarfBuzzSharp
+      libSkiaSharp
+      uiohook
+    </Unmanaged64Assemblies>
+  </Costura>
+</Weavers>
