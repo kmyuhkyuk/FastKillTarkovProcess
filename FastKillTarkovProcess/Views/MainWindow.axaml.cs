@@ -13,7 +13,7 @@ namespace FastKillTarkovProcess.Views
         {
             InitializeComponent();
 
-            Closing += (sender, args) => ViewModel.OnClosing();
+            Closing += (_, _) => ViewModel.OnClosing();
         }
 
         private void EnabledShortcutButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
