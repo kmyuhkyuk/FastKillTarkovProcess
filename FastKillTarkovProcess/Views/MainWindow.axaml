@@ -12,6 +12,7 @@
     d:DesignHeight="450"
     d:DesignWidth="450"
     x:DataType="vm:MainWindowViewModel"
+    Closing="MainWindow_OnClosing"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
     <Window.Resources>

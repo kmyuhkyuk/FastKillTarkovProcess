@@ -108,7 +108,8 @@ namespace FastKillTarkovProcess.ViewModels
             Process.Start("explorer", AppService.AppURL);
         }
 
-        public void OnClosing()
+        [RelayCommand]
+        private void OnClosing()
         {
             _taskPoolGlobalHook.Dispose();
         }

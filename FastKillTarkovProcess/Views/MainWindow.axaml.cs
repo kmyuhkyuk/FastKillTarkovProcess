@@ -12,8 +12,6 @@ namespace FastKillTarkovProcess.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            Closing += (_, _) => ViewModel.OnClosing();
         }
 
         private void EnabledShortcutButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
@@ -24,6 +22,11 @@ namespace FastKillTarkovProcess.Views
         private void AppInfoTextBlock_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             ViewModel.OpenAuthorURLCommandCommand.Execute(null);
+        }
+
+        private void MainWindow_OnClosing(object? sender, WindowClosingEventArgs e)
+        {
+            ViewModel.ClosingCommand.Execute(null);
         }
     }
 }
