@@ -83,7 +83,7 @@ namespace FastKillTarkovProcess.ViewModels
         }
 
         [RelayCommand]
-        private async Task OnBindKeyCommand()
+        private async Task OnBindKey()
         {
             ShortcutName = "...";
             _shortcut = ShortcutModel.None;
@@ -97,13 +97,13 @@ namespace FastKillTarkovProcess.ViewModels
         }
 
         [RelayCommand]
-        private void OnChangeEnabledShortcutCommand(bool? parameter)
+        private void OnChangeEnabledShortcut(bool? parameter)
         {
             IsEnabledShortcut = (bool)parameter!;
         }
 
         [RelayCommand]
-        private void OnOpenAuthorURLCommand()
+        private void OnOpenAuthorURL()
         {
             Process.Start("explorer", AppService.AppURL);
         }

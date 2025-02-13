@@ -25,10 +25,10 @@
             <Button
                 Margin="0,24,0,0"
                 HorizontalAlignment="Center"
-                Command="{Binding BindKeyCommandCommand, Mode=OneWay}"
+                Command="{Binding BindKeyCommand, Mode=OneWay}"
                 Content="{Binding ShortcutName, Mode=OneWay}"
                 FontSize="28"
-                IsEnabled="{Binding BindKeyCommandCommand.IsRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" />
+                IsEnabled="{Binding BindKeyCommand.IsRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" />
             <CheckBox
                 Margin="0,12,0,0"
                 HorizontalAlignment="Center"

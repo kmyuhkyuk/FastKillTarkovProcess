@@ -16,12 +16,12 @@ namespace FastKillTarkovProcess.Views
 
         private void EnabledShortcutButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
         {
-            ViewModel.ChangeEnabledShortcutCommandCommand.Execute(((CheckBox)sender!).IsChecked);
+            ViewModel.ChangeEnabledShortcutCommand.Execute(((CheckBox)sender!).IsChecked);
         }
 
         private void AppInfoTextBlock_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            ViewModel.OpenAuthorURLCommandCommand.Execute(null);
+            ViewModel.OpenAuthorURLCommand.Execute(null);
         }
 
         private void MainWindow_OnClosing(object? sender, WindowClosingEventArgs e)
