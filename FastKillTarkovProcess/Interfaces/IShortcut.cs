@@ -8,9 +8,9 @@ namespace FastKillTarkovProcess.Interfaces
 
         int Shortcut { get; }
 
-        bool IsNone => InputDevice == InputDevice.None;
-
         string Name { get; }
+
+        bool IsNone => InputDevice == InputDevice.None;
 
         static abstract IShortcut Deserialize(string json);
 
