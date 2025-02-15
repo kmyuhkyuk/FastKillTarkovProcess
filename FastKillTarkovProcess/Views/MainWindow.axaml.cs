@@ -7,10 +7,13 @@ namespace FastKillTarkovProcess.Views
 {
     public partial class MainWindow : Window
     {
-        private MainWindowViewModel ViewModel => (MainWindowViewModel)DataContext!;
+        private MainWindowViewModel ViewModel { get; }
 
         public MainWindow()
         {
+            ViewModel = App.GetRequiredService<MainWindowViewModel>();
+            DataContext = ViewModel;
+
             InitializeComponent();
         }
 

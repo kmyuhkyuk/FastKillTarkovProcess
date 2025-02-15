@@ -12,6 +12,8 @@ namespace FastKillTarkovProcess
 {
     public partial class App : Application
     {
+        private static ServiceProvider? _serviceProvider;
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -24,22 +26,30 @@ namespace FastKillTarkovProcess
             collection.AddSingleton<AppService>();
             collection.AddSingleton<KillTarkovProcessService>();
 
+            collection.AddSingleton<MainWindow>();
             collection.AddSingleton<MainWindowViewModel>();
 
-            var services = collection.BuildServiceProvider();
+            _serviceProvider = collection.BuildServiceProvider();
 
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
                 // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
                 DisableAvaloniaDataAnnotationValidation();
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = services.GetRequiredService<MainWindowViewModel>()
-                };
+                desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             }
 
             base.OnFrameworkInitializationCompleted();
+        }
+
+        public static T GetService<T>() where T : class
+        {
+            return _serviceProvider!.GetService<T>()!;
+        }
+
+        public static T GetRequiredService<T>() where T : class
+        {
+            return _serviceProvider!.GetRequiredService<T>();
         }
 
         private void DisableAvaloniaDataAnnotationValidation()
