@@ -25,7 +25,8 @@ namespace FastKillTarkovProcess.ViewModels
 
         [ObservableProperty] private string _shortcutName;
 
-        private const string ShortcutJsonName = "Shortcut.json";
+        private readonly string _shortcutJsonPath =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Shortcut.json");
 
         private readonly TaskPoolGlobalHook _taskPoolGlobalHook;
 
@@ -36,8 +37,8 @@ namespace FastKillTarkovProcess.ViewModels
 
             _isEnabledShortcut = true;
 
-            _shortcut = File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ShortcutJsonName))
-                ? ShortcutModel.Deserialize(File.ReadAllText(ShortcutJsonName))
+            _shortcut = File.Exists(_shortcutJsonPath)
+                ? ShortcutModel.Deserialize(File.ReadAllText(_shortcutJsonPath))
                 : ShortcutModel.None;
 
             _shortcutName = _shortcut.Name;
@@ -93,7 +94,7 @@ namespace FastKillTarkovProcess.ViewModels
 
             ShortcutName = _shortcut.Name;
 
-            await File.WriteAllTextAsync(ShortcutJsonName, _shortcut.Serialize());
+            await File.WriteAllTextAsync(_shortcutJsonPath, _shortcut.Serialize());
         }
 
         [RelayCommand]
