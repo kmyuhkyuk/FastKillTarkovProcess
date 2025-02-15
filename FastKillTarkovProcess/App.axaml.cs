@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -45,6 +46,11 @@ namespace FastKillTarkovProcess
         public static T GetService<T>() where T : class
         {
             return _serviceProvider!.GetService<T>()!;
+        }
+
+        public static object GetService(Type serviceType)
+        {
+            return _serviceProvider!.GetService(serviceType)!;
         }
 
         public static T GetRequiredService<T>() where T : class
