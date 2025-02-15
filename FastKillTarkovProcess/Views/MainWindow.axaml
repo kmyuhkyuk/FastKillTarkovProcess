@@ -49,8 +49,5 @@
                 HorizontalAlignment="Right"
                 Text="{Binding AppService.AppVersion, Mode=OneWay}" />
         </StackPanel>
-
-
     </Grid>
-
 </Window>
