@@ -71,6 +71,9 @@ namespace FastKillTarkovProcess.ViewModels
 
         private void OnMousePressed(object? sender, MouseHookEventArgs e)
         {
+            if (e.Data.Button is MouseButton.Button1 or MouseButton.Button2)
+                return;
+
             if (_isBindingShortcut)
             {
                 _shortcut = new ShortcutModel(e.Data.Button);
