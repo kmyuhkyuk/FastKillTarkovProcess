@@ -7,7 +7,7 @@ namespace FastKillTarkovProcess.Views
 {
     public partial class MainWindow : Window
     {
-        private MainWindowViewModel ViewModel { get; }
+        public MainWindowViewModel ViewModel { get; }
 
         public MainWindow()
         {
