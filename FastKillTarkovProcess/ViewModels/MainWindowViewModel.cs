@@ -30,6 +30,8 @@ namespace FastKillTarkovProcess.ViewModels
 
         private readonly TaskPoolGlobalHook _taskPoolGlobalHook;
 
+        private bool _isBindingShortcut;
+
         public MainWindowViewModel(AppService appService, KillTarkovProcessService killTarkovProcessService)
         {
             _appService = appService;
@@ -53,7 +55,7 @@ namespace FastKillTarkovProcess.ViewModels
 
         private void OnKeyPressed(object? sender, KeyboardHookEventArgs e)
         {
-            if (_shortcut.IsNone)
+            if (_isBindingShortcut)
             {
                 _shortcut = new ShortcutModel(e.Data.KeyCode);
 
@@ -69,7 +71,7 @@ namespace FastKillTarkovProcess.ViewModels
 
         private void OnMousePressed(object? sender, MouseHookEventArgs e)
         {
-            if (_shortcut.IsNone)
+            if (_isBindingShortcut)
             {
                 _shortcut = new ShortcutModel(e.Data.Button);
 
@@ -84,13 +86,17 @@ namespace FastKillTarkovProcess.ViewModels
         }
 
         [RelayCommand]
-        private async Task OnBindKey()
+        private async Task OnBindShortcut()
         {
             ShortcutName = "...";
             _shortcut = ShortcutModel.None;
 
+            _isBindingShortcut = true;
+
             while (_shortcut.IsNone)
                 await Task.Delay(50);
+
+            _isBindingShortcut = false;
 
             ShortcutName = _shortcut.Name;
 
