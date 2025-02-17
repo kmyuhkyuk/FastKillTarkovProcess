@@ -19,6 +19,7 @@ namespace FastKillTarkovProcess.Models
 
         public string Name { get; } = name;
 
+        [JsonIgnore]
         public bool IsNone => InputDevice == InputDevice.None;
 
         public static ShortcutModel None => new();
