@@ -9,7 +9,7 @@ using FastKillTarkovProcess.Interfaces;
 using FastKillTarkovProcess.Models;
 using FastKillTarkovProcess.Services;
 using SharpHook;
-using SharpHook.Native;
+using SharpHook.Data;
 
 namespace FastKillTarkovProcess.ViewModels
 {

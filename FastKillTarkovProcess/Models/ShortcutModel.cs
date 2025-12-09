@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using FastKillTarkovProcess.Enums;
 using FastKillTarkovProcess.Interfaces;
-using SharpHook.Native;
+using SharpHook.Data;
 
 namespace FastKillTarkovProcess.Models
 {
