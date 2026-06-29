@@ -1,6 +1,5 @@
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Interactivity;
 using FastKillTarkovProcess.ViewModels;
 
 namespace FastKillTarkovProcess.Views
@@ -15,11 +14,6 @@ namespace FastKillTarkovProcess.Views
             DataContext = ViewModel;
 
             InitializeComponent();
-        }
-
-        private void EnabledShortcutButton_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
-        {
-            ViewModel.ChangeEnabledShortcutCommand.Execute(((CheckBox)sender!).IsChecked);
         }
 
         private void AppInfoTextBlock_OnPointerPressed(object? sender, PointerPressedEventArgs e)

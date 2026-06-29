@@ -104,12 +104,6 @@ namespace FastKillTarkovProcess.ViewModels
         }
 
         [RelayCommand]
-        private void OnChangeEnabledShortcut(bool? parameter)
-        {
-            IsEnabledShortcut = (bool)parameter!;
-        }
-
-        [RelayCommand]
         private void OnOpenAuthorURL()
         {
             Process.Start("explorer", AppService.AppURL);
